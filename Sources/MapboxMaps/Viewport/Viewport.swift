@@ -99,7 +99,8 @@
             options: options,
             animationHelper: DefaultViewportTransitionAnimationHelper(
                 mapboxMap: mapboxMap,
-                cameraAnimationsManager: cameraAnimationsManager))
+                cameraAnimationsManager: cameraAnimationsManager),
+            cameraAnimationsManager: cameraAnimationsManager)
     }
 
     public func makeImmediateViewportTransition() -> ImmediateViewportTransition {

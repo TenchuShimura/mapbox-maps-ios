@@ -19,6 +19,8 @@ internal protocol CameraAnimationsManagerProtocol: AnyObject {
                       animationOwner: AnimationOwner,
                       animations: @escaping (inout CameraTransition) -> Void) -> BasicCameraAnimator
 
+    func makeCatchUpAnimator(toCameraOptions: CameraOptions, duration: TimeInterval) -> CatchUpAnimator
+
     func cancelAnimations()
 
     var animationsEnabled: Bool { get set }
@@ -336,6 +338,28 @@ public class CameraAnimationsManager: CameraAnimationsManagerProtocol {
         cameraAnimatorsSet.add(decelerateAnimator)
         decelerateAnimator.startAnimation()
         internalAnimator = decelerateAnimator
+    }
+
+    internal func makeCatchUpAnimator(toCameraOptions: CameraOptions, duration: TimeInterval) -> CatchUpAnimator {
+        let interpolator = Interpolator()
+        let catchUpAnimator = CatchUpAnimator(
+            toCameraOptions: toCameraOptions,
+            duration: duration,
+            cameraOptionsInterpolator: CameraOptionsInterpolator(
+                coordinateInterpolator: CoordinateInterpolator(
+                    interpolator: interpolator,
+                    latitudeInterpolator: WrappingInterpolator(range: -180..<180)),
+                edgeInsetsInterpolator: EdgeInsetsInterpolator(
+                    interpolator: interpolator),
+                pointInterpolator: PointInterpolator(
+                    interpolator: interpolator),
+                interpolator: interpolator,
+                directionInterpolator: WrappingInterpolator(range: 0..<360)),
+            mapboxMap: mapboxMap,
+            dateProvider: DefaultDateProvider(),
+            delegate: self)
+        cameraAnimatorsSet.add(catchUpAnimator)
+        return catchUpAnimator
     }
 }
 

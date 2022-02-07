@@ -211,7 +211,8 @@ internal final class MapViewDependencyProvider: MapViewDependencyProviderProtoco
                 options: .init(),
                 animationHelper: DefaultViewportTransitionAnimationHelper(
                     mapboxMap: mapboxMap,
-                    cameraAnimationsManager: cameraAnimationsManager)),
+                    cameraAnimationsManager: cameraAnimationsManager),
+                cameraAnimationsManager: cameraAnimationsManager),
             anyTouchGestureRecognizer: anyTouchGestureRecognizer,
             doubleTapGestureRecognizer: doubleTapGestureRecognizer,
             doubleTouchGestureRecognizer: doubleTouchGestureRecognizer)
