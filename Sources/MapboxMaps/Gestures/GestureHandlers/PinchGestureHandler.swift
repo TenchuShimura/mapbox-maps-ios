@@ -21,7 +21,7 @@ internal final class PinchGestureHandler: GestureHandler, PinchGestureHandlerPro
             impl2.rotateEnabled = rotateEnabled
         }
     }
-    internal var focalPoint: CGPoint? = nil {
+    internal var focalPoint: CGPoint? {
         didSet {
             impl1.focalPoint = focalPoint
             impl2.focalPoint = focalPoint

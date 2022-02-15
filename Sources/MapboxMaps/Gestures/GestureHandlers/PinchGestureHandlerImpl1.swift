@@ -29,7 +29,7 @@ internal final class PinchGestureHandlerImpl1: PinchGestureHandlerImpl {
     private let mapboxMap: MapboxMapProtocol
 
     internal weak var delegate: GestureHandlerDelegate?
-    internal var focalPoint: CGPoint? = nil
+    internal var focalPoint: CGPoint?
 
     /// Initialize the handler which creates the panGestureRecognizer and adds to the view
     internal init(mapboxMap: MapboxMapProtocol) {

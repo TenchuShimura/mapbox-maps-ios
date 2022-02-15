@@ -4,5 +4,5 @@ final class MockPinchGestureHandler: GestureHandler, PinchGestureHandlerProtocol
     var rotateEnabled: Bool = true
 
     var behavior: PinchGestureBehavior = .tracksTouchLocationsWhenPanningAfterZoomChange
-    var focalPoint: CGPoint? = nil
+    var focalPoint: CGPoint?
 }
