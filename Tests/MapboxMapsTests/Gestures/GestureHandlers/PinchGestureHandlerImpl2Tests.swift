@@ -307,4 +307,19 @@ final class PinchGestureHandlerImpl2Tests: XCTestCase {
         XCTAssertTrue(mapboxMap.dragEndStub.invocations.isEmpty)
         XCTAssertTrue(delegate.gestureEndedStub.invocations.isEmpty)
     }
+
+    func testFocalPoint() {
+        let focalPoint = CGPoint(x: 1000, y: 1000)
+        pinchGestureHandler.focalPoint = focalPoint
+        mapboxMap.cameraState = .random()
+
+        gestureRecognizer.getStateStub.defaultReturnValue = .began
+        gestureRecognizer.sendActions()
+
+        gestureRecognizer.getStateStub.defaultReturnValue = .changed
+        gestureRecognizer.sendActions()
+
+        XCTAssertEqual(mapboxMap.setCameraStub.invocations.count, 2)
+        XCTAssertEqual(mapboxMap.setCameraStub.parameters[1].anchor, focalPoint)
+    }
 }
