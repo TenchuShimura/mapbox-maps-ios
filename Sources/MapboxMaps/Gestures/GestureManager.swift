@@ -30,6 +30,7 @@ public final class GestureManager: GestureHandlerDelegate {
             panGestureHandler.decelerationFactor = newValue.panDecelerationFactor
             doubleTapToZoomInGestureHandler.focalPoint = newValue.focalPoint
             doubleTouchToZoomOutGestureHandler.focalPoint = newValue.focalPoint
+            quickZoomGestureHandler.focalPoint = newValue.focalPoint
         }
         get {
             var gestureOptions = GestureOptions()
@@ -99,7 +100,7 @@ public final class GestureManager: GestureHandlerDelegate {
     private let pitchGestureHandler: GestureHandler
     private let doubleTapToZoomInGestureHandler: DoubleTapToZoomInGestureHandlerProtocol
     private let doubleTouchToZoomOutGestureHandler: DoubleTouchToZoomOutGestureHandlerProtocol
-    private let quickZoomGestureHandler: GestureHandler
+    private let quickZoomGestureHandler: QuickZoomGestureHandlerProtocol
     private let singleTapGestureHandler: GestureHandler
     private let anyTouchGestureHandler: GestureHandler
     private let mapboxMap: MapboxMapProtocol
@@ -109,7 +110,7 @@ public final class GestureManager: GestureHandlerDelegate {
                   pitchGestureHandler: GestureHandler,
                   doubleTapToZoomInGestureHandler: DoubleTapToZoomInGestureHandlerProtocol,
                   doubleTouchToZoomOutGestureHandler: DoubleTouchToZoomOutGestureHandlerProtocol,
-                  quickZoomGestureHandler: GestureHandler,
+                  quickZoomGestureHandler: QuickZoomGestureHandlerProtocol,
                   singleTapGestureHandler: GestureHandler,
                   anyTouchGestureHandler: GestureHandler,
                   mapboxMap: MapboxMapProtocol) {
