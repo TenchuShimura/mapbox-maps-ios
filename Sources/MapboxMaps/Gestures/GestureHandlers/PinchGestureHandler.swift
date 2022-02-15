@@ -3,9 +3,11 @@ import UIKit
 internal protocol PinchGestureHandlerProtocol: GestureHandler {
     var rotateEnabled: Bool { get set }
     var behavior: PinchGestureBehavior { get set }
+    var focalPoint: CGPoint? { get set }
 }
 
 internal protocol PinchGestureHandlerImpl: AnyObject {
+    var focalPoint: CGPoint? { get set }
     func handleGesture(_ gestureRecognizer: UIPinchGestureRecognizer, state: UIGestureRecognizer.State)
 }
 
@@ -19,7 +21,12 @@ internal final class PinchGestureHandler: GestureHandler, PinchGestureHandlerPro
             impl2.rotateEnabled = rotateEnabled
         }
     }
-
+    internal var focalPoint: CGPoint? = nil {
+        didSet {
+            impl1.focalPoint = focalPoint
+            impl2.focalPoint = focalPoint
+        }
+    }
     internal var behavior: PinchGestureBehavior = .tracksTouchLocationsWhenPanningAfterZoomChange
 
     private var initialBehavior: PinchGestureBehavior?
