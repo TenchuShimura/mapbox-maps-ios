@@ -7,7 +7,7 @@ Mapbox welcomes participation and contributions from everyone.
 * Prevent rendering in background by pausing/resuming display link in response to application or scene lifecycle events ([#1086](https://github.com/mapbox/mapbox-maps-ios/pull/1086))
 * Sync viewport and puck animations. ([#1090](https://github.com/mapbox/mapbox-maps-ios/pull/1090))
 * Add puckBearingEnabled property for location ([#1107](https://github.com/mapbox/mapbox-maps-ios/pull/1107))
-* Zoom focal point ([#1122](https://github.com/mapbox/mapbox-maps-ios/pull/1122))
+* Add focalPoint property to zoom gestures ([#1122](https://github.com/mapbox/mapbox-maps-ios/pull/1122))
 
 ## 10.3.0 - February 10, 2022
 
